@@ -1,5 +1,3 @@
-import React from 'react';
-
 function PostPage(params) {
   const id = params.id;
   return (

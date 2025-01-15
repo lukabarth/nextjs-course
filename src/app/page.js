@@ -12,6 +12,8 @@ export default function Home() {
       <Link href="/exemplo?parametro=abc">Página com parâmetro</Link>
 
       <Link href="/produtos/categorias/roupas">Ir a categoria de Roupas</Link>
+
+      <Link href="/dashboard">Ir para dashboard</Link>
     </main>
   );
 }
