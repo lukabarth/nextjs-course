@@ -1,23 +1,11 @@
+import { deleteTodo } from "@/actions";
 import Button from "@/components/Button";
 import { db } from "@/db";
 
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 export default async function Home() {
   const todos = await db.todo.findMany();
-
-  async function deleteTodo(formData) {
-    "use server";
-
-    const id = Number(formData.get("id"));
-
-    await db.todo.delete({
-      where: { id },
-    })
-
-    redirect("/");
-  }
 
   return (
     <>
