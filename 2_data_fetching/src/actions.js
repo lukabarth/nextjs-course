@@ -30,3 +30,11 @@ export async function addTodo(formData) {
 
   redirect("/");
 };
+
+export const findTodoById = async (id) => {
+  const todo = await db.todo.findFirst({
+    where: {id},
+  })
+
+  return todo;
+}
