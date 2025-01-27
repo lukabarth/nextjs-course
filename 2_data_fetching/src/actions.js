@@ -30,8 +30,6 @@ export async function addTodo(formData) {
 }
 
 export const findTodoById = async (id) => {
-  // throw new Error("Ops!");
-
   const todo = await db.todo.findFirst({
     where: { id },
   });
@@ -44,22 +42,30 @@ export const updateTodo = async (formState, formData) => {
   const titulo = formData.get("titulo");
   const descricao = formData.get("descricao");
 
-  if (titulo.length < 5) {
+  try {
+    // throw new Error("Falha ao salvar dados, sistema offline.");
+
+    if (titulo.length < 5) {
+      return {
+        errors: "O titulo precisa de pelo menos 5 caracteres.",
+      };
+    }
+
+    if (descricao.length < 10) {
+      return {
+        errors: "A descrição precisa de pelo menos 10 caracteres.",
+      };
+    }
+
+    await db.todo.update({
+      where: { id },
+      data: { titulo, descricao },
+    });
+  } catch (error) {
     return {
-      errors: "O titulo precisa de pelo menos 5 caracteres.",
+      errors: error.message,
     };
   }
-
-  if (descricao.length < 10) {
-    return {
-      errors: "A descrição precisa de pelo menos 10 caracteres.",
-    };
-  }
-
-  await db.todo.update({
-    where: { id },
-    data: { titulo, descricao },
-  });
 
   redirect("/");
 };
