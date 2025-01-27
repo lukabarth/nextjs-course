@@ -30,6 +30,8 @@ export async function addTodo(formData) {
 }
 
 export const findTodoById = async (id) => {
+  // throw new Error("Ops!");
+
   const todo = await db.todo.findFirst({
     where: { id },
   });
