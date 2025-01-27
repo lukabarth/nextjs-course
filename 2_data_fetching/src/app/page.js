@@ -1,8 +1,11 @@
-import { deleteTodo } from "@/actions";
-import Button from "@/components/Button";
-import { db } from "@/db";
-
 import Link from "next/link";
+
+import { db } from "@/db";
+import { deleteTodo } from "@/actions";
+
+import Button from "@/components/Button";
+
+export const revalidate = 20;
 
 export default async function Home() {
   const todos = await db.todo.findMany();
