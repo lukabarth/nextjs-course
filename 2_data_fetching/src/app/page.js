@@ -5,7 +5,9 @@ import { deleteTodo } from "@/actions";
 
 import Button from "@/components/Button";
 
-export const revalidate = 20;
+// export const revalidate = 20; cache de tempo
+
+// export const dynamic = "force-dynamic"; cache instantaneo
 
 export default async function Home() {
   const todos = await db.todo.findMany();
