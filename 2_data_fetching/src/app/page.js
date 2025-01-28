@@ -36,7 +36,9 @@ export default async function Home() {
                 </Link>
                 <form action={deleteTodo}>
                   <input type="hidden" name="id" value={todo.id} />
-                  <Button>Excluir</Button>
+                  <Button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    Excluir
+                  </Button>
                 </form>
               </div>
             </div>
